@@ -6,7 +6,7 @@ node_modules/
 .env.*
 
 # Prisma generated files
-/generated/prisma/
+/generated/prisma
 
 # Logs
 *.log
