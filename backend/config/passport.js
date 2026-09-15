@@ -7,6 +7,7 @@ const prisma = new PrismaClient();
 module.exports = (passport) => {
   passport.use(
     new LocalStrategy(
+      //setting username to email so it grabs user by email instead of username
       {
         usernameField: 'email',
         passwordField: 'password',
