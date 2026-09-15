@@ -1,9 +1,8 @@
+const express = require('express');
+const session = require('express-session');
+const passport = require('passport');
 
-const express = require("express");
-const session = require("express-session");
-const passport = require("passport");
-
-const passportConfig = require("./config/passport");
+const passportConfig = require('./config/passport');
 
 const app = express();
 
@@ -30,8 +29,8 @@ app.use(passport.session());
 passportConfig(passport);
 
 // Test route
-app.get("/", (req, res) => {
-  res.send("Server is running");
+app.get('/', (req, res) => {
+  res.send('Server is running');
 });
 
 app.listen(PORT, () => {

@@ -45,8 +45,8 @@ module.exports = (passport) => {
   });
 
   passport.deserializeUser(async (id, done) => {
-    User.prisma.findUnique({ where: { id } }, function(err, user) {
-        done(err, user);
+    User.prisma.findUnique({ where: { id } }, function (err, user) {
+      done(err, user);
     });
   });
 };
