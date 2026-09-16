@@ -3,13 +3,12 @@ import bcrypt from 'bcrypt';
 import prisma from '../src/lib/prisma.js';
 
 //auth middleware
- export const requireAuth = (req, res, next) => {
+export const requireAuth = (req, res, next) => {
   if (req.isAuthenticated()) {
     return next();
   }
   res.status(401).json({ error: 'Not authenticated' });
 };
-
 
 export default (passport) => {
   passport.use(

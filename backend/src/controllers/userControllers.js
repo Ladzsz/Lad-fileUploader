@@ -30,7 +30,7 @@ export const createUserController = async (req, res) => {
 //edit user
 export const updateUserController = async (req, res) => {
   try {
-    const {username} = req.body;
+    const { username } = req.body;
 
     if (!username) {
       return res.status(400).json({ error: 'Username is required' });
