@@ -1,10 +1,17 @@
-const LocalStrategy = require('passport-local').Strategy;
-const bcrypt = require('bcrypt');
-const { PrismaClient } = require('@prisma/client');
+import { Strategy as LocalStrategy } from 'passport-local';
+import bcrypt from 'bcrypt';
+import prisma from '../src/lib/prisma.js';
 
-const prisma = new PrismaClient();
+//auth middleware
+ export const requireAuth = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.status(401).json({ error: 'Not authenticated' });
+};
 
-module.exports = (passport) => {
+
+export default (passport) => {
   passport.use(
     new LocalStrategy(
       //setting username to email so it grabs user by email instead of username
@@ -24,7 +31,7 @@ module.exports = (passport) => {
             });
           }
 
-          const isMatch = await bcrypt.compare(password, user.passwordHash);
+          const isMatch = await bcrypt.compare(password, user.password);
 
           if (!isMatch) {
             return done(null, false, {
@@ -45,8 +52,14 @@ module.exports = (passport) => {
   });
 
   passport.deserializeUser(async (id, done) => {
-    prisma.user.findUnique({ where: { id } }, function (err, user) {
-      done(err, user);
-    });
+    try {
+      const user = await prisma.user.findUnique({
+        where: { id },
+      });
+
+      done(null, user);
+    } catch (error) {
+      done(error);
+    }
   });
 };

@@ -1,8 +1,9 @@
-const express = require('express');
-const session = require('express-session');
-const passport = require('passport');
-
-const passportConfig = require('./config/passport');
+import 'dotenv/config';
+import express from 'express';
+import session from 'express-session';
+import passport from 'passport';
+import userRoutes from './src/routes/userRoutes.js';
+import configurePassport from './config/passport.js';
 
 const app = express();
 
@@ -26,12 +27,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Passport configuration
-passportConfig(passport);
+configurePassport(passport);
 
-// Test route
-app.get('/', (req, res) => {
-  res.send('Server is running');
-});
+// Routes
+app.use('/api/users', userRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
