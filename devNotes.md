@@ -10,3 +10,14 @@ all these changes today ensure that not only is prisma and passport working but,
 
 day complete.
 
+
+# 9/21/2026
+
+Today was another success i created the folder routes and controllers. this was done by migrating the schema and updating client to incude parent id and parent and child relations for the database. 
+
+i then created, crud routes as well as viewing all folders at the root this was done by viewing all folders that dont have a parent id. and created a move route which works by changing the parent id after checking if folder of course belongs to user and if destination folder or positon belongs to user. before allowing user to switch folder position to another folder or null. 
+
+these additions ensure that users have full crud control over their own folders as well as hirearchy control in terms of viewing and moving through the tree.
+
+day complete.
+
