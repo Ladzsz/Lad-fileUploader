@@ -3,6 +3,7 @@ import express from 'express';
 import session from 'express-session';
 import passport from 'passport';
 import userRoutes from './src/routes/userRoutes.js';
+import folderRoutes from './src/routes/folderRoutes.js'
 import configurePassport from './config/passport.js';
 
 const app = express();
@@ -31,6 +32,7 @@ configurePassport(passport);
 
 // Routes
 app.use('/api/users', userRoutes);
+app.use('/api/folders', folderRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
