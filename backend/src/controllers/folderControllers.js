@@ -16,34 +16,34 @@ const grabFolderByUser = async (req) => {
 export const createfolderController = async (req, res) => {
   try {
     const { name, parentId } = req.body;
-    const user = req.user.id
-    
+    const user = req.user.id;
+
     if (!name) {
       return res.status(400).json({ error: 'All fields are required' });
     }
 
     if (!user) {
-        return res.status(400).json({ error: 'folder must have user' });
+      return res.status(400).json({ error: 'folder must have user' });
     }
 
     const newFolder = await prisma.folder.create({
       data: {
-  name,
+        name,
 
-  parent: parentId
-    ? {
-        connect: {
-          id: Number(parentId)
-        }
-      }
-    : null,
+        parent: parentId
+          ? {
+              connect: {
+                id: Number(parentId),
+              },
+            }
+          : null,
 
-  user: {
-    connect: {
-      id: user
-    }
-  }
-  }
+        user: {
+          connect: {
+            id: user,
+          },
+        },
+      },
     });
 
     res.status(201).json(newFolder);
@@ -58,7 +58,7 @@ export const updatefolderController = async (req, res) => {
   try {
     const { name } = req.body;
 
-     const folder = await grabFolderByUser(req);
+    const folder = await grabFolderByUser(req);
 
     if (!folder) {
       return res.status(404).json({
@@ -67,12 +67,12 @@ export const updatefolderController = async (req, res) => {
     }
 
     const updatedfolder = await prisma.folder.update({
-    where: {
+      where: {
         id: folder.id,
-    },
-    data: {
+      },
+      data: {
         name,
-    },
+      },
     });
 
     res.status(201).json(updatedfolder);
@@ -85,8 +85,7 @@ export const updatefolderController = async (req, res) => {
 //delete folder
 export const deletefoldercontroller = async (req, res) => {
   try {
-
-     const folder = await grabFolderByUser(req);
+    const folder = await grabFolderByUser(req);
 
     if (!folder) {
       return res.status(404).json({
@@ -95,12 +94,12 @@ export const deletefoldercontroller = async (req, res) => {
     }
 
     prisma.folder.delete({
-    where: {
+      where: {
         id: folder.id,
-    },
+      },
     });
 
-   res.status(200).json({ message: 'Folder deleted successfully' });
+    res.status(200).json({ message: 'Folder deleted successfully' });
   } catch (err) {
     console.error('ERROR:', err.message);
     res.status(500).json({ error: 'Internal server error' });
@@ -110,7 +109,7 @@ export const deletefoldercontroller = async (req, res) => {
 //view folder folder
 export const viewfolderController = async (req, res) => {
   try {
-     const folder = await grabFolderByUser(req);
+    const folder = await grabFolderByUser(req);
 
     if (!folder) {
       return res.status(404).json({
@@ -135,11 +134,10 @@ export const viewfolderTreeController = async (req, res) => {
     });
 
     res.status(200).json(folders);
-
   } catch (error) {
     console.error(error);
     res.status(500).json({
-      error: 'Internal server error'
+      error: 'Internal server error',
     });
   }
 };
@@ -147,7 +145,6 @@ export const viewfolderTreeController = async (req, res) => {
 //move folder
 export const movefolderController = async (req, res) => {
   try {
-
     const folder = await grabFolderByUser(req);
 
     if (!folder) {
@@ -189,7 +186,7 @@ export const movefolderController = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({
-      error: 'Internal server error'
+      error: 'Internal server error',
     });
   }
 };
