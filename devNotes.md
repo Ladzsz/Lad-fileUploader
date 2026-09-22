@@ -21,3 +21,17 @@ these additions ensure that users have full crud control over their own folders 
 
 day complete.
 
+
+# 9/22/2026
+
+today was not successful originally tried to use cloudinary kept running into errors. so could not get a file properly uploded to the database from its cdn. tomorrow i will try using supabase as the cdn instead since cloudinary seems to be causing tons of errors.
+
+things tried
+
+- confirmed it wasnt my envs
+- confirmed it was getting a file though complaining about said file
+- tried changing file type configs still same error
+
+take from this
+
+going to try supabase as my cdn tomorrow for the file uploading
