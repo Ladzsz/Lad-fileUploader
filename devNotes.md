@@ -35,3 +35,12 @@ things tried
 take from this
 
 going to try supabase as my cdn tomorrow for the file uploading
+
+# 9/23/2026 
+
+today was susccesful i switched the cdn to supabase and set up a project for the file uploader in there to act as my database.
+i dealt with lots of supabase auth issues today though a classified solution was implemented
+the route today was set up and now works by sending the file to supabase after parsing from multer and then inserting the file information
+into the database which.
+
+today was a success!
