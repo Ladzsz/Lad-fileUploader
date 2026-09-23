@@ -11,7 +11,11 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
 //file routes
-router.post('/upload', requireAuth, upload.single('file'), uploadfileController
+router.post(
+  '/upload',
+  requireAuth,
+  upload.single('file'),
+  uploadfileController
 );
 // router.get('/:id');
 // router.get('/:id/download');

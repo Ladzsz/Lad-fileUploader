@@ -20,17 +20,17 @@ export const uploadfileController = async (req, res) => {
 
     if (!file) {
       return res.status(400).json({
-        message: "No file uploaded"
+        message: 'No file uploaded',
       });
     }
 
     const fileName = `${Date.now()}-${file.originalname}`;
-    
+
     const { data, error } = await supabase.storage
-      .from("upload")
+      .from('upload')
       .upload(fileName, file.buffer, {
         contentType: file.mimetype,
-        upsert: false
+        upsert: false,
       });
 
     if (error) {
@@ -38,7 +38,7 @@ export const uploadfileController = async (req, res) => {
     }
 
     const { data: urlData } = supabase.storage
-      .from("upload")
+      .from('upload')
       .getPublicUrl(data.path);
 
     const fileUrl = urlData.publicUrl;
@@ -48,18 +48,16 @@ export const uploadfileController = async (req, res) => {
         name: file.originalname,
         url: fileUrl,
         size: file.size,
-        userId: req.user.id
-      }
+        userId: req.user.id,
+      },
     });
 
     res.status(201).json({
-      message: "File uploaded successfully",
-      file: newFile
+      message: 'File uploaded successfully',
+      file: newFile,
     });
-
   } catch (err) {
     console.error('ERROR:', err.message);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
-
