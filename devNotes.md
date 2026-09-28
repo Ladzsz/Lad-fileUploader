@@ -47,6 +47,6 @@ today was a success!
 
 # 9/28/2026
 
-today was also a success! i created the access file route it works by grabbing the file and created a singed url to get it from the bucket on the cdn. and then redirects the user to said file. this was done by adding path to the schema and object and making the filepath to be uploaded with the file. this all allows a user to view and download said file. today was great. tomorrow i shall work on edit file name and delete file
+today was also a success! i created the access file route it works by grabbing the file and created a singed url to get it from the bucket on the cdn. and then redirects the user to said file. this was done by adding path to the schema and object and making the filepath to be uploaded with the file. this all allows a user to view and download said file (what happens first depends on type). today was great. tomorrow i shall work on edit file name and delete file
 
 take from this, when working with cdns and trying to view/download files ensure you are using a signed url to grab it from the storage.
