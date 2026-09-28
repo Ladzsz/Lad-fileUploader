@@ -38,7 +38,8 @@ model Folder {
 model File {
   id        Int      @id @default(autoincrement())
   name      String
-  url       String   
+  url       String  
+  path      String 
   size      Int      
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

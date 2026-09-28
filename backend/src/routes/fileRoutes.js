@@ -2,7 +2,7 @@ import express from 'express';
 import { requireAuth } from '../../config/passport.js';
 import multer from 'multer';
 
-import { uploadfileController } from '../controllers/fileControllers.js';
+import { uploadfileController, accessfileController } from '../controllers/fileControllers.js';
 
 const router = express.Router();
 
@@ -17,9 +17,16 @@ router.post(
   upload.single('file'),
   uploadfileController
 );
-// router.get('/:id');
-// router.get('/:id/download');
-// router.patch('/:id/move');
-// router.delete('/:id');
+
+router.get(
+  '/:id/access',
+  requireAuth,
+  accessfileController
+);
+//router.get('/root'); get from root
+// router.patch('/:id'); file name only
+// router.patch('/:id/move'); file position
+// router.delete('/:id'); delete
+
 
 export default router;
