@@ -28,15 +28,15 @@ export const uploadfileController = async (req, res) => {
     const filepath = `users/${req.user.id}/${fileName}`;
 
     const { data, error } = await supabase.storage
-    .from('upload')
-    .upload(filepath, file.buffer, {
+      .from('upload')
+      .upload(filepath, file.buffer, {
         contentType: file.mimetype,
         upsert: false,
-    });
+      });
 
-if (error) {
-    throw error;
-}
+    if (error) {
+      throw error;
+    }
 
     const { data: urlData } = supabase.storage
       .from('upload')
@@ -67,23 +67,21 @@ if (error) {
 //access file
 export const accessfileController = async (req, res) => {
   try {
-    
     const file = await grabfileByUser(req);
 
-   if (!file?.url) {
-    return res.status(404).json({ message: "File not found." });
-}
+    if (!file?.url) {
+      return res.status(404).json({ message: 'File not found.' });
+    }
 
-   const { data, error } = await supabase.storage
-    .from("upload")
-    .createSignedUrl(file.path, 60); // 60 seconds
+    const { data, error } = await supabase.storage
+      .from('upload')
+      .createSignedUrl(file.path, 60); // 60 seconds
 
-if (error || !data?.signedUrl) {
-    return res.status(404).json({ message: "File not found." });
-}
+    if (error || !data?.signedUrl) {
+      return res.status(404).json({ message: 'File not found.' });
+    }
 
-return res.redirect(data.signedUrl);
-
+    return res.redirect(data.signedUrl);
   } catch (err) {
     console.error('ERROR:', err.message);
     res.status(500).json({ error: 'Internal server error' });
