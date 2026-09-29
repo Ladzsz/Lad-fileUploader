@@ -5,6 +5,8 @@ import multer from 'multer';
 import {
   uploadfileController,
   accessfileController,
+  editfilenamecontroller,
+  deletefilecontroller,
 } from '../controllers/fileControllers.js';
 
 const router = express.Router();
@@ -23,8 +25,8 @@ router.post(
 
 router.get('/:id/access', requireAuth, accessfileController);
 //router.get('/root'); get from root
-// router.patch('/:id'); file name only
+router.patch('/:id/editname', requireAuth, editfilenamecontroller); 
 // router.patch('/:id/move'); file position
-// router.delete('/:id'); delete
+router.delete('/:id/delete', requireAuth, deletefilecontroller);
 
 export default router;

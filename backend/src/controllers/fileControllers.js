@@ -87,3 +87,83 @@ export const accessfileController = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
+//edit file
+export const editfilenamecontroller = async (req, res) => {
+  try {
+    const file = await grabfileByUser(req);
+
+    const { name } = req.body;
+
+    if (!file?.url) {
+      return res.status(404).json({ message: 'File not found.' });
+    }
+
+    const oldpath = file.path;
+
+    const extension = oldpath.includes('.')
+      ? oldpath.substring(oldpath.lastIndexOf('.'))
+      : '';
+
+    const newfilepath = `users/${req.user.id}/${name}${extension}`;
+
+    const { data, error } = await supabase
+      .storage
+      .from('upload')
+      .move(oldpath, newfilepath);
+
+    if (error) {
+      throw error;
+    }
+
+    const updatedfilename = await prisma.file.update({
+      where: {
+        id: file.id,
+      },
+      data: {
+        name,
+        path: newfilepath
+      },
+    });
+
+    res.status(200).json({
+      message: 'File renamed successfully',
+      file: updatedfilename,
+    });
+
+  } catch (err) {
+    console.error('ERROR:', err.message);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+//delete file 
+export const deletefilecontroller = async (req, res) => {
+  try {
+    const file = await grabfileByUser(req);
+
+    if (!file?.url) {
+      return res.status(404).json({ message: 'File not found.' });
+    }
+
+    const { data, error } = await supabase.storage
+      .from('upload')
+      .remove([file.path]);
+
+    if (error) {
+      throw error;
+    }
+
+    await prisma.file.delete({
+      where: {
+        id: file.id,
+      },
+    });
+
+    res.status(200).json({ message: 'File deleted successfully' });
+
+  } catch (err) {
+    console.error('ERROR:', err.message);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+};
