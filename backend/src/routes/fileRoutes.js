@@ -25,7 +25,7 @@ router.post(
 
 router.get('/:id/access', requireAuth, accessfileController);
 //router.get('/root'); get from root
-router.patch('/:id/editname', requireAuth, editfilenamecontroller); 
+router.patch('/:id/editname', requireAuth, editfilenamecontroller);
 // router.patch('/:id/move'); file position
 router.delete('/:id/delete', requireAuth, deletefilecontroller);
 

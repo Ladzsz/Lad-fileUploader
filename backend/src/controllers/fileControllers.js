@@ -107,8 +107,7 @@ export const editfilenamecontroller = async (req, res) => {
 
     const newfilepath = `users/${req.user.id}/${name}${extension}`;
 
-    const { data, error } = await supabase
-      .storage
+    const { data, error } = await supabase.storage
       .from('upload')
       .move(oldpath, newfilepath);
 
@@ -122,7 +121,7 @@ export const editfilenamecontroller = async (req, res) => {
       },
       data: {
         name,
-        path: newfilepath
+        path: newfilepath,
       },
     });
 
@@ -130,14 +129,13 @@ export const editfilenamecontroller = async (req, res) => {
       message: 'File renamed successfully',
       file: updatedfilename,
     });
-
   } catch (err) {
     console.error('ERROR:', err.message);
     res.status(500).json({ error: 'Internal server error' });
   }
 };
 
-//delete file 
+//delete file
 export const deletefilecontroller = async (req, res) => {
   try {
     const file = await grabfileByUser(req);
@@ -161,7 +159,6 @@ export const deletefilecontroller = async (req, res) => {
     });
 
     res.status(200).json({ message: 'File deleted successfully' });
-
   } catch (err) {
     console.error('ERROR:', err.message);
     res.status(500).json({ error: 'Internal server error' });
