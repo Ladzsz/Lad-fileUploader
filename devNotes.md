@@ -50,3 +50,9 @@ today was a success!
 today was also a success! i created the access file route it works by grabbing the file and created a singed url to get it from the bucket on the cdn. and then redirects the user to said file. this was done by adding path to the schema and object and making the filepath to be uploaded with the file. this all allows a user to view and download said file (what happens first depends on type). today was great. tomorrow i shall work on edit file name and delete file
 
 take from this, when working with cdns and trying to view/download files ensure you are using a signed url to grab it from the storage.
+
+# 9/29/2026
+
+today was a succes i worked on the edit and delete routes for my files, edit works by getting file, name, path and exstention then building a new path and editing the name and path in the bucket and database. delete route works by grabbing file and removing it from bucket and database. tomorrow i will work on the hirarechy routes (viewing file in the root and moving it through the tree)
+
+today was a success!
