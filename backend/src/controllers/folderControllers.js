@@ -93,7 +93,7 @@ export const deletefoldercontroller = async (req, res) => {
       });
     }
 
-    prisma.folder.delete({
+    await prisma.folder.delete({
       where: {
         id: folder.id,
       },
