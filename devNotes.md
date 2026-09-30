@@ -56,3 +56,9 @@ take from this, when working with cdns and trying to view/download files ensure 
 today was a succes i worked on the edit and delete routes for my files, edit works by getting file, name, path and exstention then building a new path and editing the name and path in the bucket and database. delete route works by grabbing file and removing it from bucket and database. tomorrow i will work on the hirarechy routes (viewing file in the root and moving it through the tree)
 
 today was a success!
+
+# 9/30/2026 
+
+today was a success, created the root and move file routes, works the same way the folder ones do. i also fixed the folder creation controller as the way i had the prisma query set up was fighting prismas natural flow causing issues with how null was set. but all is good now
+
+today was a success!!
