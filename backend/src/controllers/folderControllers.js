@@ -30,13 +30,15 @@ export const createfolderController = async (req, res) => {
       data: {
         name,
 
-        parent: parentId
+        ...(parentId
           ? {
-              connect: {
-                id: Number(parentId),
+              parent: {
+                connect: {
+                  id: Number(parentId),
+                },
               },
             }
-          : null,
+          : {}),
 
         user: {
           connect: {

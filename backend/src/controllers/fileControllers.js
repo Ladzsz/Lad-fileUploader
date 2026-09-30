@@ -164,3 +164,71 @@ export const deletefilecontroller = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
+//view files at the root
+export const viewfileTreeController = async (req, res) => {
+  try {
+    const files = await prisma.file.findMany({
+      where: {
+        userId: req.user.id,
+        folderId: null,
+      },
+    });
+
+    res.status(200).json(files);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: 'Internal server error',
+    });
+  }
+};
+
+//move file
+export const movefileController = async (req, res) => {
+  try {
+    const file = await grabfileByUser(req);
+
+    if (!file) {
+      return res.status(404).json({
+        error: 'File not found',
+      });
+    }
+
+    const { newFolderId } = req.body;
+
+    if (newFolderId !== null) {
+      const newFolder = await prisma.folder.findFirst({
+        where: {
+          id: Number(newFolderId),
+          userId: req.user.id,
+        },
+      });
+
+      if (!newFolder) {
+        return res.status(404).json({
+          error: 'New parent folder not found',
+        });
+      }
+    }
+
+    const updatedFilePosition = await prisma.file.update({
+      where: {
+        id: file.id,
+      },
+      data: {
+        folderId: newFolderId === null ? null : Number(newFolderId),
+      },
+    });
+
+    res.status(200).json({
+      message: 'File moved',
+      folder: updatedFilePosition,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({
+      error: 'Internal server error',
+    });
+  }
+};
