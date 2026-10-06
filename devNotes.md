@@ -62,3 +62,9 @@ today was a success!
 today was a success, created the root and move file routes, works the same way the folder ones do. i also fixed the folder creation controller as the way i had the prisma query set up was fighting prismas natural flow causing issues with how null was set. but all is good now
 
 today was a success!!
+
+# 10/6/2025
+
+today was a quick yet successful day, today i simply created the route that does the actual email sending for forgot password. it simply generates the hashed token to use, and then creates the email and sends it to the user if theyre email is in the database. tomorrow i will do the actual reset route to change user pass with their token. (im really tired today and busy so could only do something quick)
+
+today was a success!
