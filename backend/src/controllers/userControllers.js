@@ -1,5 +1,6 @@
 import prisma from '../lib/prisma.js';
 import bcrypt from 'bcrypt';
+import { generateResetToken, sendResetEmail } from "../utils/mailservice.js";
 
 //ccreate user
 export const createUserController = async (req, res) => {
@@ -61,5 +62,34 @@ export const deleteUserController = async (req, res) => {
   } catch (err) {
     console.error('ERROR:', err.message);
     res.status(500).json({ error: 'Internal server error' });
+  }
+};
+
+//send reset password controller
+export const sendresetPassword = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const { token, hashedToken, expires } = generateResetToken();
+
+    await prisma.user.update({
+      where: { email: email },
+      data: {
+        hashedToken: hashedToken,
+        tokenExpires: expires,
+      },
+    });
+
+    await sendResetEmail(email, token);
+
+    res.json({
+      message: "If email exists reset email sent",
+    });
+  } catch (err) {
+    console.error(err);
+
+    res.json({
+      message: "If email exists reset email sent",
+    });
   }
 };
