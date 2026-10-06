@@ -1,6 +1,6 @@
 import prisma from '../lib/prisma.js';
 import bcrypt from 'bcrypt';
-import { generateResetToken, sendResetEmail } from "../utils/mailservice.js";
+import { generateResetToken, sendResetEmail } from '../utils/mailservice.js';
 
 //ccreate user
 export const createUserController = async (req, res) => {
@@ -83,13 +83,13 @@ export const sendresetPassword = async (req, res) => {
     await sendResetEmail(email, token);
 
     res.json({
-      message: "If email exists reset email sent",
+      message: 'If email exists reset email sent',
     });
   } catch (err) {
     console.error(err);
 
     res.json({
-      message: "If email exists reset email sent",
+      message: 'If email exists reset email sent',
     });
   }
 };

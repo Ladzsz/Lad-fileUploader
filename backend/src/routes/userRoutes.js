@@ -12,7 +12,7 @@ const router = express.Router();
 
 //user routes
 router.post('/', createUserController);
-router.post("/reset-password", sendresetPassword);
+router.post('/reset-password', sendresetPassword);
 //router.post("/confirm-reset-password/:token", confirmResetPassword);
 router.put('/me', requireAuth, updateUserController);
 router.delete('/me', requireAuth, deleteUserController);
