@@ -1,6 +1,7 @@
 import prisma from '../lib/prisma.js';
 import bcrypt from 'bcrypt';
 import { generateResetToken, sendResetEmail } from '../utils/mailservice.js';
+import crypto from 'crypto';
 
 //ccreate user
 export const createUserController = async (req, res) => {
@@ -91,5 +92,53 @@ export const sendresetPassword = async (req, res) => {
     res.json({
       message: 'If email exists reset email sent',
     });
+  }
+};
+
+//confirm password reset controller
+export const confirmResetPassword = async (req, res) => {
+  const { newPassword } = req.body;
+  const token = req.params.token;
+
+  try {
+    const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
+
+    const user = await prisma.user.findUnique({
+      where: {
+        hashedToken: hashedToken,
+      },
+    });
+
+     if (!user) {
+      return res.status(400).json({
+        message: "Invalid reset token",
+      });
+    }
+
+    if (new Date(user.tokenExpires) < new Date()) {
+      return res.status(400).json({
+        message: "Reset token expired",
+      });
+    }
+
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+    await prisma.user.update({
+      where: {
+        id: user.id,
+      },
+      data: {
+        password: hashedPassword,
+        hashedToken: null,
+        tokenExpires: null,
+      },
+    });
+
+    res.json({
+      message: "Password reset successful",
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to reset password" });
   }
 };

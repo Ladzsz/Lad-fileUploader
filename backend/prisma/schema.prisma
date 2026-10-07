@@ -20,7 +20,7 @@ model User {
   updatedAt DateTime @updatedAt
   folders  Folder[]
   files    File[]
-  hashedToken String? 
+  hashedToken  String?   @unique
   tokenExpires DateTime?
 }
 
