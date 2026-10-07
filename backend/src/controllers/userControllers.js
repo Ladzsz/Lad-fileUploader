@@ -101,7 +101,7 @@ export const confirmResetPassword = async (req, res) => {
   const token = req.params.token;
 
   try {
-    const hashedToken = crypto.createHash("sha256").update(token).digest("hex");
+    const hashedToken = crypto.createHash('sha256').update(token).digest('hex');
 
     const user = await prisma.user.findUnique({
       where: {
@@ -109,15 +109,15 @@ export const confirmResetPassword = async (req, res) => {
       },
     });
 
-     if (!user) {
+    if (!user) {
       return res.status(400).json({
-        message: "Invalid reset token",
+        message: 'Invalid reset token',
       });
     }
 
     if (new Date(user.tokenExpires) < new Date()) {
       return res.status(400).json({
-        message: "Reset token expired",
+        message: 'Reset token expired',
       });
     }
 
@@ -135,10 +135,10 @@ export const confirmResetPassword = async (req, res) => {
     });
 
     res.json({
-      message: "Password reset successful",
+      message: 'Password reset successful',
     });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Failed to reset password" });
+    res.status(500).json({ error: 'Failed to reset password' });
   }
 };
