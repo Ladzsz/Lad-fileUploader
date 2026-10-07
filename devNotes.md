@@ -63,8 +63,14 @@ today was a success, created the root and move file routes, works the same way t
 
 today was a success!!
 
-# 10/6/2025
+# 10/6/2026
 
 today was a quick yet successful day, today i simply created the route that does the actual email sending for forgot password. it simply generates the hashed token to use, and then creates the email and sends it to the user if theyre email is in the database. tomorrow i will do the actual reset route to change user pass with their token. (im really tired today and busy so could only do something quick)
 
 today was a success!
+
+# 10/7 2026
+
+today was successful passwords can now be reset through reset password! it works by taking their generatred tokken hashing it then comparing it to their stored tokken hash to confirm the user. then it resets the users password based off what they entered in the req body.
+
+today was successful!
