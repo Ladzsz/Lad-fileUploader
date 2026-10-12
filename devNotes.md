@@ -74,3 +74,9 @@ today was a success!
 today was successful passwords can now be reset through reset password! it works by taking their generatred tokken hashing it then comparing it to their stored tokken hash to confirm the user. then it resets the users password based off what they entered in the req body.
 
 today was successful!
+
+# 10/12 2026
+
+today was succesful i simply set up the front end and made a simple header as well as a sinple layout with some layout rules and global styling utilizing browser routing for links.
+
+today was good!
