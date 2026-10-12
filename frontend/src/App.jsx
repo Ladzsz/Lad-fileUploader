@@ -1,15 +1,15 @@
-import { useLocation, Routes, Route, Navigate } from 'react-router-dom';
-import Header from './components/header';
-import Homepage from './pages/home';
-import Login from './pages/login';
-import './App.css';
+import { useLocation, Routes, Route, Navigate } from "react-router-dom";
+import Header from "./components/header";
+import Homepage from "./pages/home";
+import Login from "./pages/login";
+import "./App.css";
 
 function Layout() {
   const location = useLocation();
 
   return (
     <>
-      {location.pathname !== '/login' && <Header />}
+      {location.pathname !== "/login" && <Header />}
 
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
