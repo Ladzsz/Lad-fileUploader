@@ -6,6 +6,7 @@ import userRoutes from './src/routes/userRoutes.js';
 import folderRoutes from './src/routes/folderRoutes.js';
 import fileRoutes from './src/routes/fileRoutes.js';
 import configurePassport from './config/passport.js';
+const cors = require('cors');
 
 const app = express();
 
@@ -14,6 +15,11 @@ const PORT = 3000;
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true,
+}));
 
 // Session
 app.use(
