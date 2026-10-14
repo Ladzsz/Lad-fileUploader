@@ -77,7 +77,7 @@
 }
 
 .forgot-pass-link:hover {
-    color: blue;
+  color: blue;
   transform: translateY(-2px);
 }
 

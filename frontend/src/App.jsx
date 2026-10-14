@@ -11,7 +11,7 @@ function Layout() {
   const [user, setUser] = useState(null);
   const location = useLocation();
 
-   //setting login to true from the backend
+  //setting login to true from the backend
   useEffect(() => {
     fetch("http://localhost:3000/api/users/me", {
       credentials: "include",
@@ -29,12 +29,18 @@ function Layout() {
 
   return (
     <>
-      {location.pathname !== "/login" || location.pathname !== "/signup" && <Header />}
+      {location.pathname !== "/login" ||
+        (location.pathname !== "/signup" && <Header />)}
 
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/home" element={<Homepage />} />
-        <Route path="/login" element={<Login setloggedin={setloggedin} setUser={setUser} user={user}/>} />
+        <Route
+          path="/login"
+          element={
+            <Login setloggedin={setloggedin} setUser={setUser} user={user} />
+          }
+        />
         <Route path="/signup" element={<Signup />} />
       </Routes>
     </>
