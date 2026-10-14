@@ -1,0 +1,104 @@
+/*form container*/
+.form-container {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  color: black;
+}
+
+.form-container > h2 {
+  font-weight: bold;
+}
+
+/*form*/
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  background-color: #800080;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.form-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/*form inputs*/
+.form-input-container {
+  margin-bottom: 20px;
+}
+
+.form-input-container > input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 12px;
+}
+
+/*form btn*/
+.form-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: white;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  color: black;
+  font-weight: bold;
+  transition: 0.2s ease;
+  border-radius: 12px;
+}
+
+.form-btn:hover {
+  background: violet;
+  transform: translateY(-2px);
+}
+
+/*login link*/
+.login-link {
+  list-style-type: none;
+  margin-top: 20px;
+}
+
+/*forgot pass link*/
+.forgot-pass-link {
+  list-style-type: none;
+  margin-top: 10px;
+  color: black;
+  border: none;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.forgot-pass-link:hover {
+    color: blue;
+  transform: translateY(-2px);
+}
+
+/*createpost text area*/
+.createpost-textarea {
+  min-width: 500px;
+  padding: 8px;
+  margin-top: 5px;
+  resize: vertical;
+  min-height: 300px;
+}
+
+/*media quereis for tablets and mobile devices*/
+@media (max-width: 768px) {
+  .createpost-textarea {
+    min-width: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .createpost-textarea {
+    min-width: 250px;
+  }
+}
