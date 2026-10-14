@@ -80,3 +80,9 @@ today was successful!
 today was succesful i simply set up the front end and made a simple header as well as a sinple layout with some layout rules and global styling utilizing browser routing for links.
 
 today was good!
+
+# 10/ 14 2026 
+
+today was succesfful i simply set up the form for create user and login using an old method i used before. all works and all is good!
+
+today was good!
