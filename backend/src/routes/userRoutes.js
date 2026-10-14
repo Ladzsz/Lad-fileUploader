@@ -31,7 +31,7 @@ router.post('/logout', (req, res) => {
   });
 });
 
-router.get("/me", (req, res) => {
+router.get('/me', (req, res) => {
   if (!req.isAuthenticated()) {
     return res.status(401).json({
       authenticated: false,
