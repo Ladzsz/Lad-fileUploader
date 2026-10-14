@@ -6,7 +6,7 @@ import userRoutes from './src/routes/userRoutes.js';
 import folderRoutes from './src/routes/folderRoutes.js';
 import fileRoutes from './src/routes/fileRoutes.js';
 import configurePassport from './config/passport.js';
-const cors = require('cors');
+import cors from 'cors'
 
 const app = express();
 
