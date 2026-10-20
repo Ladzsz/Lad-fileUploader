@@ -43,8 +43,8 @@ function Layout() {
             <Login setloggedin={setloggedin} setUser={setUser} user={user} />
           }
         />
-         <Route path="/forgot-password" element={<Forgotpass />} />
-          <Route path="/reset-password/:token" element={<Resetpass />} />
+        <Route path="/forgot-password" element={<Forgotpass />} />
+        <Route path="/reset-password/:token" element={<Resetpass />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
     </>
