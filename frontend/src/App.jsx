@@ -4,6 +4,8 @@ import Homepage from "./pages/home";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 import { useState, useEffect } from "react";
+import Forgotpass from "./pages/forgotpass";
+import Resetpass from "./pages/resetpass";
 import "./App.css";
 
 function Layout() {
@@ -41,6 +43,8 @@ function Layout() {
             <Login setloggedin={setloggedin} setUser={setUser} user={user} />
           }
         />
+         <Route path="/forgot-password" element={<Forgotpass />} />
+          <Route path="/reset-password/:token" element={<Resetpass />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>
     </>
