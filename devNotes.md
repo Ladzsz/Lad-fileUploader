@@ -86,3 +86,9 @@ today was good!
 today was succesfful i simply set up the form for create user and login using an old method i used before. all works and all is good!
 
 today was good!
+
+# 10/20/2026 
+
+today was good i set up the forgot password and reset password forms and they work! user is fully complete now!, next time i get on i will work on the user creating folders and the actual folder file sytem UI
+
+today was a success
