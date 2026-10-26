@@ -92,3 +92,9 @@ today was good!
 today was good i set up the forgot password and reset password forms and they work! user is fully complete now!, next time i get on i will work on the user creating folders and the actual folder file sytem UI
 
 today was a success
+
+# 10/26/2026 
+
+today was good i created the base of the home and file manager. file manager succesfully grabs files and folders from the root for the user
+
+today was a success!
