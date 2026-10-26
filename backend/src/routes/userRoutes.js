@@ -1,6 +1,7 @@
 import express from 'express';
 import passport from 'passport';
 import { requireAuth } from '../../config/passport.js';
+import { viewItemsAtRootController } from '../controllers/generalcontrollers/controllerAll.js';
 import {
   createUserController,
   updateUserController,
@@ -46,5 +47,8 @@ router.get('/me', (req, res) => {
     },
   });
 });
+
+//view all users folders and files at root
+router.get('/graball', requireAuth, viewItemsAtRootController);
 
 export default router;

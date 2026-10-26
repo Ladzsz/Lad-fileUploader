@@ -7,7 +7,6 @@ import {
   accessfileController,
   editfilenamecontroller,
   deletefilecontroller,
-  viewfileTreeController,
   movefileController,
 } from '../controllers/fileControllers.js';
 
@@ -25,7 +24,6 @@ router.post(
   uploadfileController
 );
 router.get('/:id/access', requireAuth, accessfileController);
-router.get('/root', requireAuth, viewfileTreeController);
 router.patch('/:id/editname', requireAuth, editfilenamecontroller);
 router.patch('/:id/move', requireAuth, movefileController);
 router.delete('/:id/delete', requireAuth, deletefilecontroller);

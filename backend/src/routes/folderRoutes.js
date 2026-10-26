@@ -6,14 +6,12 @@ import {
   deletefoldercontroller,
   viewfolderController,
   movefolderController,
-  viewfolderTreeController,
 } from '../controllers/folderControllers.js';
 
 const router = express.Router();
 
 //folder routes
 router.post('/', requireAuth, createfolderController);
-router.get('/root', requireAuth, viewfolderTreeController);
 router.get('/:id', requireAuth, viewfolderController);
 router.patch('/:id/move', requireAuth, movefolderController);
 router.put('/:id', requireAuth, updatefolderController);

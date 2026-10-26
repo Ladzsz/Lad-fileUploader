@@ -165,25 +165,6 @@ export const deletefilecontroller = async (req, res) => {
   }
 };
 
-//view files at the root
-export const viewfileTreeController = async (req, res) => {
-  try {
-    const files = await prisma.file.findMany({
-      where: {
-        userId: req.user.id,
-        folderId: null,
-      },
-    });
-
-    res.status(200).json(files);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({
-      error: 'Internal server error',
-    });
-  }
-};
-
 //move file
 export const movefileController = async (req, res) => {
   try {

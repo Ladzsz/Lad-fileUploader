@@ -125,25 +125,6 @@ export const viewfolderController = async (req, res) => {
   }
 };
 
-//view folders at the root
-export const viewfolderTreeController = async (req, res) => {
-  try {
-    const folders = await prisma.folder.findMany({
-      where: {
-        userId: req.user.id,
-        parentId: null,
-      },
-    });
-
-    res.status(200).json(folders);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({
-      error: 'Internal server error',
-    });
-  }
-};
-
 //move folder
 export const movefolderController = async (req, res) => {
   try {
