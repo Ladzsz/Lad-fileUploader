@@ -1,4 +1,5 @@
 import '../assets/filemanager.css'
+import { FaFolder } from "react-icons/fa";
 import { useState, useEffect } from "react";
 
 function Filemanager( {loggedin} ) {
@@ -24,7 +25,7 @@ const [files, setFiles] = useState([]);
         setError(err.message || "Something went wrong");
       }
     };
-    
+
     fetchitems();
   }, []);
   return (
@@ -39,7 +40,8 @@ const [files, setFiles] = useState([]);
      <>
     {folders.map((folder) => (
       <div className="itemcard" key={folder.id}>
-        <p>{folder.name}</p>
+
+        <p><span><FaFolder /></span>{folder.name}</p>
       </div>
     ))}
 

@@ -41,3 +41,16 @@
     gap: 2px;
     overflow: auto;
 }
+
+.itemcard > p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.itemcard > p > span {
+   display: flex;
+   justify-content: end;
+   align-items: end;
+}

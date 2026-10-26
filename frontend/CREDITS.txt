@@ -1,0 +1,7 @@
+Folder Icon Attribution
+
+Icon: fa/FaFolder
+Creator: Font Awesome
+Source: https://react-icons.github.io/react-icons
+License: Creative Commons Attribution 4.0 International (CC BY 4.0) license
+Changes: color changed from base color
