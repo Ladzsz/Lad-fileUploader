@@ -1,56 +1,56 @@
 .fileManager {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #363636;
-    border-radius: 16px;
-    max-width: 1000px;
-    width: 100%;
-    height: 700px;
-    padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #363636;
+  border-radius: 16px;
+  max-width: 1000px;
+  width: 100%;
+  height: 700px;
+  padding: 10px;
 }
 
 .managerlayout {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    background-color: black;
-    border-radius: 16px;
-    width: 100%;
-    max-width: 900px;
-    height: 600px;
-    padding: 20px;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  background-color: black;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 900px;
+  height: 600px;
+  padding: 20px;
+  flex-direction: column;
 }
 
 .managerTop {
-    display: flex;
-    justify-content: start;
-    align-items: start;
-    width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  width: 100%;
 }
 
 .managerBody {
-    display: flex;
-    justify-content: start;
-    align-items: start;
-    width: 100%;
-    height: 100%;
-    flex-direction: column;
-    gap: 2px;
-    overflow: auto;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  gap: 2px;
+  overflow: auto;
 }
 
 .itemcard > p {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .itemcard > p > span {
-   display: flex;
-   justify-content: end;
-   align-items: end;
+  display: flex;
+  justify-content: end;
+  align-items: end;
 }
