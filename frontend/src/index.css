@@ -31,3 +31,18 @@ nav a {
   padding: 0.75rem 1rem;
   transition: color 0.2s ease;
 }
+
+/*scroll styles*/
+* {
+  scrollbar-color: #800080 black;
+  scrollbar-width: thin;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+}

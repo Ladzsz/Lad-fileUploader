@@ -1,11 +1,17 @@
 import React from "react";
-import "../assets/header.css";
+import "../assets/home.css";
+import Filemanager from "../components/filemanager";
 
-function Homepage() {
+function Homepage( {loggedin} ) {
   return (
     <div className="homepage">
-      <h1>Welcome to the File Uploader</h1>
-      <p>Upload your files easily and securely.</p>
+      <div className="homeTop">
+          <h1>Welcome to the File Uploader</h1>
+      <p>Upload your files easily and securely. <br />
+      View your folders and files below!</p>
+      </div>
+      
+      <Filemanager loggedin={loggedin}/>
     </div>
   );
 }

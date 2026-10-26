@@ -36,7 +36,7 @@ function Layout() {
 
       <Routes>
         <Route path="/" element={<Navigate to="/login" replace />} />
-        <Route path="/home" element={<Homepage />} />
+        <Route path="/home" element={<Homepage loggedin={loggedin} />} />
         <Route
           path="/login"
           element={
