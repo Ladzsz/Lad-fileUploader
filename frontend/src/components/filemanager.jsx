@@ -46,23 +46,20 @@ function Filemanager({ loggedin }) {
   //handling form submit to add folders
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-      setError("");
-     try {
-      const response = await fetch(
-        "http://localhost:3000/api/folders",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          credentials: "include",
-          body: JSON.stringify({
-            name: formData.name,
-            parentId: formData.parentId,
-          }),
+
+    setError("");
+    try {
+      const response = await fetch("http://localhost:3000/api/folders", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
         },
-      );
+        credentials: "include",
+        body: JSON.stringify({
+          name: formData.name,
+          parentId: formData.parentId,
+        }),
+      });
 
       if (!response.ok) {
         throw new Error("folder creation failed");
@@ -70,39 +67,44 @@ function Filemanager({ loggedin }) {
 
       const newFolder = await response.json();
 
-    setFolders((prev) => [...prev, newFolder]);
-    setformData({ name: "", parentId: null });
-        
-      } catch (err) {
-        setError(err.message || "Something went wrong");
-    };
-  }
+      setFolders((prev) => [...prev, newFolder]);
+      setformData({ name: "", parentId: null });
+    } catch (err) {
+      setError(err.message || "Something went wrong");
+    }
+  };
 
- 
   return (
     <div className="fileManager">
       <div className="managerlayout">
         <div className="managerTop">
           <h1>File Manager</h1>
-          <button title="add folder" onClick={() => setisopen(!isopen)} className="addfolderBtn"><FaFolderPlus size={40}/></button>
-          {isopen &&
-          <form onSubmit={handleSubmit} method="POST" className="folderDropdown">
-            <div className="inputcontainer">
-                <label htmlFor="name">
-              Name: 
-            </label>
-            <input 
-        type="text" 
-        name="name"
-        value={formData.name} 
-        onChange={handleChange} 
-        maxLength="30"
-      />
-            </div>
-      <button type="submit">create</button>
-          </form>
-          }
-          
+          <button
+            title="add folder"
+            onClick={() => setisopen(!isopen)}
+            className="addfolderBtn"
+          >
+            <FaFolderPlus size={40} />
+          </button>
+          {isopen && (
+            <form
+              onSubmit={handleSubmit}
+              method="POST"
+              className="folderDropdown"
+            >
+              <div className="inputcontainer">
+                <label htmlFor="name">Name:</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  maxLength="30"
+                />
+              </div>
+              <button type="submit">create</button>
+            </form>
+          )}
         </div>
 
         <div className="managerBody">
