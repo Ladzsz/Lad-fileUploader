@@ -8,6 +8,7 @@ function Filemanager({ loggedin }) {
   const [folders, setFolders] = useState([]);
   const [files, setFiles] = useState([]);
   const [error, setError] = useState("");
+  const [isopen, setisopen] = useState(false);
   const [formData, setformData] = useState({
     name: "",
     parentId: null,
@@ -83,8 +84,13 @@ function Filemanager({ loggedin }) {
       <div className="managerlayout">
         <div className="managerTop">
           <h1>File Manager</h1>
-          <button title="add folder" className="addfolderBtn"><FaFolderPlus size={40}/></button>
+          <button title="add folder" onClick={() => setisopen(!isopen)} className="addfolderBtn"><FaFolderPlus size={40}/></button>
+          {isopen &&
           <form onSubmit={handleSubmit} method="POST" className="folderDropdown">
+            <div className="inputcontainer">
+                <label htmlFor="name">
+              Name: 
+            </label>
             <input 
         type="text" 
         name="name"
@@ -92,10 +98,11 @@ function Filemanager({ loggedin }) {
         onChange={handleChange} 
         maxLength="30"
       />
-
-      
+            </div>
       <button type="submit">create</button>
           </form>
+          }
+          
         </div>
 
         <div className="managerBody">
