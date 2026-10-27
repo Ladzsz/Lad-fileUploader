@@ -26,8 +26,8 @@
 
 .managerTop {
   display: flex;
-  justify-content: start;
-  align-items: start;
+  justify-content: space-between;
+  align-items: center;
   width: 100%;
 }
 
@@ -53,4 +53,11 @@
   display: flex;
   justify-content: end;
   align-items: end;
+}
+
+.addfolderBtn {
+  padding: 0;
+  margin: 0;
+  all: unset;
+  cursor: pointer;
 }
