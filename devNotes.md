@@ -98,3 +98,9 @@ today was a success
 today was good i created the base of the home and file manager. file manager succesfully grabs files and folders from the root for the user
 
 today was a success!
+
+# 10/27/2026
+
+today was good users can now create folders on the front end tomorrow will work on hirarechy on front end so users can place folders inside of each other!
+
+today was good!
