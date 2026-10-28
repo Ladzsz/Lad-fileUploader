@@ -104,3 +104,9 @@ today was a success!
 today was good users can now create folders on the front end tomorrow will work on hirarechy on front end so users can place folders inside of each other!
 
 today was good!
+
+# 10/28/2026
+
+today was decent and quick, made it so users can now add folders inside of folders on the frontend, introduced a bug ill tweak out when i start working on viewing things inside of folders.
+
+today was good
