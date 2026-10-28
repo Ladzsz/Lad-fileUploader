@@ -11,13 +11,23 @@ function Filemanager({ loggedin }) {
   const [isopen, setisopen] = useState(false);
   const [formData, setformData] = useState({
     name: "",
-    parentId: null,
+    parentIdname: null,
   });
 
   //handle change func
   const handleChange = (e) => {
-    setformData({ ...formData, [e.target.name]: e.target.value });
+    setformData({
+  ...formData,
+  [e.target.name]: e.target.value,
+  [e.target.parentIdname]: e.target.value
+});
   };
+
+  //function to grab users id by name
+  const folderToIdMap = folders.reduce((map, folder) => {
+  map[folder.name] = folder.id;
+  return map;
+}, {});
 
   //use effect tov grab items for file manager at root
   useEffect(() => {
@@ -48,6 +58,9 @@ function Filemanager({ loggedin }) {
     e.preventDefault();
 
     setError("");
+
+    const selectedParentName = formData.parentIdname;
+    const parentId = folderToIdMap[selectedParentName];
     try {
       const response = await fetch("http://localhost:3000/api/folders", {
         method: "POST",
@@ -57,7 +70,7 @@ function Filemanager({ loggedin }) {
         credentials: "include",
         body: JSON.stringify({
           name: formData.name,
-          parentId: formData.parentId,
+          parentId: parentId,
         }),
       });
 
@@ -102,6 +115,18 @@ function Filemanager({ loggedin }) {
                   maxLength="30"
                 />
               </div>
+
+ <div className="inputcontainer">
+<label htmlFor="name">Parent:</label>
+                <input
+                  type="text"
+                  name="parentIdname"
+                  value={formData.parentIdname}
+                  onChange={handleChange}
+                  maxLength="30"
+                />
+
+ </div>
               <button type="submit">create</button>
             </form>
           )}
