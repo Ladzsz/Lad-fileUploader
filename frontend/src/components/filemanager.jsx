@@ -17,17 +17,17 @@ function Filemanager({ loggedin }) {
   //handle change func
   const handleChange = (e) => {
     setformData({
-  ...formData,
-  [e.target.name]: e.target.value,
-  [e.target.parentIdname]: e.target.value
-});
+      ...formData,
+      [e.target.name]: e.target.value,
+      [e.target.parentIdname]: e.target.value,
+    });
   };
 
   //function to grab users id by name
   const folderToIdMap = folders.reduce((map, folder) => {
-  map[folder.name] = folder.id;
-  return map;
-}, {});
+    map[folder.name] = folder.id;
+    return map;
+  }, {});
 
   //use effect tov grab items for file manager at root
   useEffect(() => {
@@ -116,8 +116,8 @@ function Filemanager({ loggedin }) {
                 />
               </div>
 
- <div className="inputcontainer">
-<label htmlFor="name">Parent:</label>
+              <div className="inputcontainer">
+                <label htmlFor="name">Parent (optional):</label>
                 <input
                   type="text"
                   name="parentIdname"
@@ -125,8 +125,7 @@ function Filemanager({ loggedin }) {
                   onChange={handleChange}
                   maxLength="30"
                 />
-
- </div>
+              </div>
               <button type="submit">create</button>
             </form>
           )}
